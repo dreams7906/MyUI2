@@ -8,8 +8,17 @@ A Roblox Luau UI library with:
 - [Lucide](https://lucide.dev/) icons;
 - **Koharu**, a chibi anime girl who peeks over the panel with her fists resting on its edge. She blinks and follows your cursor, and when you click her she blushes and talks.
 
+**Try it:** this runs the example, which loads the library and builds a demo window.
+
+```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dreams7906/MyUI2/main/Example.lua"))()
+```
+
+**Use it in your script:** loading the library shows nothing by itself. The window appears when you call `CreateWindow`.
+
 ```lua
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/dreams7906/MyUI2/main/MyUI2.lua"))()
+local Window = Library:CreateWindow({ Title = "My Hub", Author = "XX" })
 ```
 
 See [`Example.lua`](Example.lua) for a short tour that uses every element: a **Main** tab with Basics / Inputs / Pickers pills and a **Mascot** tab to play with her moods and emotes.
