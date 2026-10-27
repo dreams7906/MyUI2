@@ -1,0 +1,419 @@
+{
+ "_comment": "Koharu sprite sheet: frame order = index in the sheet (5 columns). Params are Live2D (Cubism 2) parameter values; every frame keeps her arms up so her fists rest on the panel edge.",
+ "model": {
+  "package": "live2d-widget-model-koharu",
+  "entry": "assets/koharu.model.json"
+ },
+ "canvas": 768,
+ "place": {
+  "scale": 0.6,
+  "x": -96,
+  "y": 0
+ },
+ "settleTicks": 600,
+ "crop": [
+  40,
+  20,
+  720,
+  700
+ ],
+ "cell": 196,
+ "pad": 4,
+ "columns": 5,
+ "fadeBottom": 12,
+ "blush": {
+  "_comment": "frame: [gain, glow, strokes]; boosts PARAM_CHEEK against a PARAM_CHEEK=0 render, only inside 'band' (canvas rows of her cheeks)",
+  "band": [
+   405,
+   500
+  ],
+  "frames": {
+   "Shy": [
+    3.0,
+    0.42,
+    true
+   ],
+   "ShyTalk": [
+    3.0,
+    0.42,
+    true
+   ],
+   "Pat": [
+    3.0,
+    0.42,
+    true
+   ],
+   "Flustered": [
+    3.2,
+    0.5,
+    true
+   ],
+   "Pout": [
+    2.2,
+    0.25,
+    false
+   ],
+   "Happy": [
+    2.0,
+    0.18,
+    false
+   ],
+   "HappyTalk": [
+    2.0,
+    0.18,
+    false
+   ]
+  }
+ },
+ "frames": [
+  {
+   "name": "GazeL",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_ANGLE_X": -24,
+    "PARAM_EYE_BALL_X": -0.8
+   }
+  },
+  {
+   "name": "GazeC",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20
+   }
+  },
+  {
+   "name": "GazeR",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_ANGLE_X": 24,
+    "PARAM_EYE_BALL_X": 0.8
+   }
+  },
+  {
+   "name": "GazeDL",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_ANGLE_X": -18,
+    "PARAM_ANGLE_Y": -16,
+    "PARAM_EYE_BALL_X": -0.6,
+    "PARAM_EYE_BALL_Y": -0.6
+   }
+  },
+  {
+   "name": "GazeD",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_ANGLE_Y": -18,
+    "PARAM_EYE_BALL_Y": -0.7
+   }
+  },
+  {
+   "name": "GazeDR",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_ANGLE_X": 18,
+    "PARAM_ANGLE_Y": -16,
+    "PARAM_EYE_BALL_X": 0.6,
+    "PARAM_EYE_BALL_Y": -0.6
+   }
+  },
+  {
+   "name": "BlinkL",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_ANGLE_X": -24,
+    "PARAM_EYE_BALL_X": -0.8,
+    "PARAM_EYE_L_OPEN": 0,
+    "PARAM_EYE_R_OPEN": 0
+   }
+  },
+  {
+   "name": "BlinkC",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_EYE_L_OPEN": 0,
+    "PARAM_EYE_R_OPEN": 0
+   }
+  },
+  {
+   "name": "BlinkR",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_ANGLE_X": 24,
+    "PARAM_EYE_BALL_X": 0.8,
+    "PARAM_EYE_L_OPEN": 0,
+    "PARAM_EYE_R_OPEN": 0
+   }
+  },
+  {
+   "name": "BlinkDL",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_ANGLE_X": -18,
+    "PARAM_ANGLE_Y": -16,
+    "PARAM_EYE_BALL_X": -0.6,
+    "PARAM_EYE_BALL_Y": -0.6,
+    "PARAM_EYE_L_OPEN": 0,
+    "PARAM_EYE_R_OPEN": 0
+   }
+  },
+  {
+   "name": "BlinkD",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_ANGLE_Y": -18,
+    "PARAM_EYE_BALL_Y": -0.7,
+    "PARAM_EYE_L_OPEN": 0,
+    "PARAM_EYE_R_OPEN": 0
+   }
+  },
+  {
+   "name": "BlinkDR",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_ANGLE_X": 18,
+    "PARAM_ANGLE_Y": -16,
+    "PARAM_EYE_BALL_X": 0.6,
+    "PARAM_EYE_BALL_Y": -0.6,
+    "PARAM_EYE_L_OPEN": 0,
+    "PARAM_EYE_R_OPEN": 0
+   }
+  },
+  {
+   "name": "Smile",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_MOUTH_FORM": 1,
+    "PARAM_CHEEK": 0.35,
+    "PARAM_ANGLE_Z": 4,
+    "PARAM_EYE_01": 2
+   }
+  },
+  {
+   "name": "SmileTalk",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_MOUTH_FORM": 1,
+    "PARAM_CHEEK": 0.35,
+    "PARAM_ANGLE_Z": 4,
+    "PARAM_EYE_01": 2,
+    "PARAM_MOUTH_OPEN_Y": 0.8
+   }
+  },
+  {
+   "name": "Happy",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_EYE_L_OPEN": 0,
+    "PARAM_EYE_R_OPEN": 0,
+    "PARAM_EYE_L_SMILE": 1,
+    "PARAM_EYE_R_SMILE": 1,
+    "PARAM_MOUTH_FORM": 1,
+    "PARAM_CHEEK": 0.5,
+    "PARAM_ANGLE_Z": -6
+   }
+  },
+  {
+   "name": "HappyTalk",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_EYE_L_OPEN": 0,
+    "PARAM_EYE_R_OPEN": 0,
+    "PARAM_EYE_L_SMILE": 1,
+    "PARAM_EYE_R_SMILE": 1,
+    "PARAM_MOUTH_FORM": 1,
+    "PARAM_CHEEK": 0.5,
+    "PARAM_ANGLE_Z": -6,
+    "PARAM_MOUTH_OPEN_Y": 0.8
+   }
+  },
+  {
+   "name": "Shy",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_CHEEK": 1,
+    "PARAM_ANGLE_Y": -10,
+    "PARAM_ANGLE_X": 8,
+    "PARAM_EYE_BALL_X": 0.7,
+    "PARAM_EYE_BALL_Y": -0.5,
+    "PARAM_BROW_L_FORM": -1,
+    "PARAM_BROW_R_FORM": -1,
+    "PARAM_MOUTH_FORM": -0.4
+   }
+  },
+  {
+   "name": "ShyTalk",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_CHEEK": 1,
+    "PARAM_ANGLE_Y": -10,
+    "PARAM_ANGLE_X": 8,
+    "PARAM_EYE_BALL_X": 0.7,
+    "PARAM_EYE_BALL_Y": -0.5,
+    "PARAM_BROW_L_FORM": -1,
+    "PARAM_BROW_R_FORM": -1,
+    "PARAM_MOUTH_FORM": -0.4,
+    "PARAM_MOUTH_OPEN_Y": 0.5
+   }
+  },
+  {
+   "name": "Pat",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_CHEEK": 1,
+    "PARAM_EYE_L_OPEN": 0,
+    "PARAM_EYE_R_OPEN": 0,
+    "PARAM_EYE_L_SMILE": 1,
+    "PARAM_EYE_R_SMILE": 1,
+    "PARAM_MOUTH_FORM": 1,
+    "PARAM_ANGLE_Z": -12,
+    "PARAM_ANGLE_Y": -6
+   }
+  },
+  {
+   "name": "Surprised",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_MOUTH_OPEN_Y": 1,
+    "PARAM_MOUTH_FORM": -0.3,
+    "PARAM_ANGLE_Y": 8,
+    "PARAM_EYE_BALL_Y": 0.3
+   }
+  },
+  {
+   "name": "Flustered",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_CHEEK": 1,
+    "PARAM_TEAR_L": 2,
+    "PARAM_TEAR_R": 2,
+    "PARAM_MOUTH_OPEN_Y": 0.5,
+    "PARAM_MOUTH_FORM": -1,
+    "PARAM_BROW_L_FORM": -1,
+    "PARAM_BROW_R_FORM": -1,
+    "PARAM_ANGLE_Z": 6
+   }
+  },
+  {
+   "name": "Talk",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_MOUTH_OPEN_Y": 0.8
+   }
+  },
+  {
+   "name": "Pout",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_CHEEK": 0.8,
+    "PARAM_BROW_L_ANGLE": -0.67,
+    "PARAM_BROW_R_ANGLE": -0.67,
+    "PARAM_BROW_L_FORM": -1,
+    "PARAM_BROW_R_FORM": -1,
+    "PARAM_MOUTH_FORM": -1,
+    "PARAM_ANGLE_Z": 8,
+    "PARAM_ANGLE_X": -16,
+    "PARAM_EYE_BALL_X": -0.8,
+    "PARAM_EYE_L_OPEN": 0.8,
+    "PARAM_EYE_R_OPEN": 0.8
+   }
+  },
+  {
+   "name": "Sleepy",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_EYE_L_OPEN": 0.3,
+    "PARAM_EYE_R_OPEN": 0.3,
+    "PARAM_ANGLE_Z": 10,
+    "PARAM_ANGLE_Y": -6,
+    "PARAM_MOUTH_FORM": 0.3
+   }
+  },
+  {
+   "name": "Wink",
+   "params": {
+    "PARAM_ARM_L": 1,
+    "PARAM_ARM_R": 1,
+    "PARAM_ARM_L_02": 20,
+    "PARAM_ARM_R_02": 20,
+    "PARAM_EYE_L_OPEN": 0,
+    "PARAM_EYE_L_SMILE": 1,
+    "PARAM_MOUTH_FORM": 1,
+    "PARAM_MOUTH_OPEN_Y": 0.35,
+    "PARAM_CHEEK": 0.4,
+    "PARAM_ANGLE_Z": 6
+   }
+  }
+ ]
+}
