@@ -2,8 +2,9 @@
 	MyUI 2 example: a small tour of every element. Replace the cards with your
 	own features; the callbacks below only show how values come back to you.
 
-	Click the girl on the header to make her blush, hold the mouse on her to
-	pat her, and leave her alone for a while to watch her doze off.
+	Koharu peeks over the top of the window: click her to make her blush, hold
+	the mouse on her to pat her, and leave her alone for a while to watch her
+	doze off.
 ]]
 
 local LIBRARY_URL = "https://raw.githubusercontent.com/dreams7906/MyUI2/main/MyUI2.lua"
@@ -26,7 +27,7 @@ local Window = Library:CreateWindow({
 	Badge = "DEV",
 	Version = "v1.0",
 	Icon = "sparkles", -- any icon name from the sheet (Lucide names)
-	Theme = "Dark", -- "Dark" or "Light"; the moon button in the header switches live
+	Theme = "Dark", -- "Dark", "Light", "Midnight", "Ocean" or "Sakura"; the moon button switches live
 	ToggleKey = Enum.KeyCode.RightShift,
 	ConfigFolder = "XX/Example",
 })
@@ -41,12 +42,19 @@ local RED = Color3.fromRGB(232, 72, 86)
 --------------------------------------------------------------------------------
 -- Main: one card per kind of element. Pills filter the cards.
 --------------------------------------------------------------------------------
-local Main = Window:AddTab({ Title = "Main", Icon = "house" })
+Window:AddTabGroup("Features")
+local Main = Window:AddTab({ Title = "Main", Icon = "house", Badge = "NEW" })
 local Basics = Main:AddSubTab("Basics")
 local Inputs = Main:AddSubTab("Inputs")
 local Pickers = Main:AddSubTab("Pickers")
 
-local Toggles = Basics:AddSection({ Title = "Toggles", Icon = "toggle-right", Color = GREEN, Side = 1 })
+local Toggles = Basics:AddSection({
+	Title = "Toggles",
+	Description = "Switches, checkboxes and add-ons",
+	Icon = "toggle-right",
+	Color = GREEN,
+	Side = 1,
+})
 local ToggleStatus = Toggles:AddLabel("Example Toggle: Off")
 Toggles:AddToggle("ExampleToggle", {
 	Title = "Example Toggle",
@@ -58,15 +66,19 @@ Toggles:AddToggle("WithKeybind", { Title = "With A Keybind" }):AddKeybind("WithK
 Toggles:AddToggle("WithColor", { Title = "With A Color", Default = true }):AddColorPicker("WithColorValue", {
 	Default = Color3.fromRGB(118, 168, 255),
 })
+Toggles:AddToggle("AsCheckbox", { Title = "Checkbox Style", Style = "Checkbox", Default = true })
 
 local Buttons = Basics:AddSection({ Title = "Buttons", Icon = "mouse-pointer-click", Color = ORANGE, Side = 2 })
 Buttons:AddButton({
 	Title = "Notify",
+	Icon = "bell",
+	Style = "Primary", -- gradient button
 	Callback = function()
 		Library:Notify({ Title = "Hello", Content = "This is a notification.", Type = "Success" })
 	end,
 }):AddButton({
 	Title = "Talk",
+	Icon = "message-circle",
 	Callback = function()
 		Window:Say("You pressed a button just to see me? Ehehe~", nil, "Blush")
 	end,
@@ -122,8 +134,8 @@ Colors:AddKeybind("ExampleKey", {
 local Info = Main:AddSection({ Title = "Info", Icon = "info", Color = PURPLE, Side = 3 })
 Info:AddParagraph({
 	Title = "Welcome",
-	Content = "Right-click any row to reset it. The search button filters this tab. "
-		.. "Configs, theme and mascot options live in Settings.",
+	Content = "Right-click any row to reset it. The sidebar search looks through every tab. "
+		.. "Configs, themes, accent color and mascot options live in Settings.",
 })
 local Status = Info:AddLabel("Single: Option A")
 
@@ -134,7 +146,8 @@ end)
 --------------------------------------------------------------------------------
 -- Mascot: play with her moods and emotes
 --------------------------------------------------------------------------------
-local MascotTab = Window:AddTab({ Title = "Mascot", Icon = "heart" })
+Window:AddTabGroup("Fun")
+local MascotTab = Window:AddTab({ Title = "Mascot", Icon = "heart", Description = "Play with her moods and emotes" })
 
 local Moods = MascotTab:AddSection({ Title = "Moods", Icon = "smile", Color = PINK, Side = 1 })
 Moods:AddDropdown("MascotMood", {

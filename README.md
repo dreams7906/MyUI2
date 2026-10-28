@@ -2,11 +2,17 @@
 
 A Roblox Luau UI library with:
 
-- a blue header band with tabs;
-- pill filters and three columns of cards;
-- a light and a dark theme;
+- a collapsible sidebar with tab groups, a player card and a search that looks through **every** tab;
+- a top bar for the current page, and segmented sub-tabs with a sliding gradient thumb;
+- cards that reflow into as many columns as the window has room for;
+- five themes (Dark, Light, Midnight, Ocean, Sakura) plus any accent color you like;
 - [Lucide](https://lucide.dev/) icons;
-- **Koharu**, a chibi anime girl who peeks over the panel with her fists resting on its edge. She blinks and follows your cursor, and when you click her she blushes and talks.
+- **Koharu**, a chibi anime girl who peeks over the top of the window with her fists resting on its edge. She blinks and follows your cursor, and when you click her she blushes and talks.
+
+![MyUI 2, dark theme](assets/preview-dark.png)
+![MyUI 2, light theme, Settings](assets/preview-light.png)
+
+<sub>Preview rendered outside Roblox from the library's own instance tree, so fonts and pixel details differ slightly in game.</sub>
 
 **Try it:** this runs the example, which loads the library and builds a demo window.
 
@@ -21,20 +27,21 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/dream
 local Window = Library:CreateWindow({ Title = "My Hub", Author = "XX" })
 ```
 
-See [`Example.lua`](Example.lua) for a short tour that uses every element: a **Main** tab with Basics / Inputs / Pickers pills and a **Mascot** tab to play with her moods and emotes.
+See [`Example.lua`](Example.lua) for a short tour that uses every element: a **Main** tab with Basics / Inputs / Pickers sub-tabs and a **Mascot** tab to play with her moods and emotes.
 
 If you also run [MyUI](https://github.com/dreams7906/MyUI) (the original look), the two replace each other, so use one per game.
 
 ## The look
 
-- **Header band:** the big title, a "by NAME · DEV v1.0" line, and tabs with a sliding "folder tab" highlight that merges into the body.
-- **Header buttons:** a moon/sun button that switches dark and light, a key pill showing the menu key (click it to rebind), and a close button.
-- **Pill row:** sub-tabs as pills with a green active state. Pills that don't fit collapse into a **+N** pill that opens a menu.
-- **Search and stats:** a search button that expands into a box, and live monospace stats: `Server 1/20   Session 00:01:22   Char Ready`.
-- **Cards:** three columns in one scrolling page. Each card has a colored icon tile, a title, a toggle count (blue while one is on) and a collapse chevron.
-- **Rows:** labels on the left with switches, inputs and dropdowns on the right. Status lines appear as monospace "• Example Toggle: Off" rows.
-- **Window:** resizable from the bottom-right grip (double-click the grip to reset the size), draggable by the header. It remembers its position, size and last tab.
-- **Loading screen:** a loading card with Koharu peeking over its top edge.
+- **Sidebar:** your logo (any icon on an accent gradient), the title, a "by NAME · DEV · v1.0" line, the search field and the tab list. Tabs can be grouped under small captions and carry a badge ("NEW", a count...). Settings is pinned at the bottom above a card with your avatar and name. Click the logo, or the « button, to collapse the sidebar to an icon rail; hovering a tab in the rail shows its name.
+- **Search everything:** typing in the sidebar search filters every tab at once. Each tab shows how many matches it has, tabs without matches fade out, and if the current tab has nothing, it offers buttons that jump to the tabs that do.
+- **Top bar:** the current tab's icon, title and a live summary ("Basics · 4 sections · 2 enabled", or your own `Description`), plus a moon/sun button for dark and light, a key chip showing the menu key (click it to rebind) and a close button.
+- **Sub-tabs:** a segmented control with a gradient thumb that slides to the active one. Sub-tabs that don't fit collapse into a **+N** segment that opens a menu.
+- **Cards:** each has a tinted icon tile, a title with an optional description, an "on/total" pill for its toggles (in the accent color while any is on), a collapse chevron, and a hairline glow along the top edge in the card's color. The grid shows up to `Columns` columns and drops to fewer when the window is narrow, so cards never get squashed.
+- **Rows:** every row highlights on hover. Switches slide with a little stretch, sliders have a gradient fill and a value chip you can type into, inputs and dropdowns are framed fields with icons, buttons press in and can be gradient "primary" buttons.
+- **Status bar:** live `players · session · fps · ms · char` on the left with a pulsing online dot, and the active config (plus "autosave" when it's on) on the right. Resize from the bottom-right grip (double-click it to reset the size).
+- **Window:** draggable by the top bar or the sidebar header, resizable, with a soft shadow and accent aura. It remembers its position, size, sidebar state and last tab.
+- **Loading screen:** a splash card with your logo and a shimmering progress bar, with Koharu peeking over its top edge.
 
 ## The mascot: Koharu
 
@@ -49,7 +56,7 @@ What she does:
 - **Leave her alone:** after about a minute without mouse movement she gets sleepy and "zzz" floats up. Moving the mouse wakes her with a start.
 - **Other moments:** she greets you with sparkles (and sparkly eyes) when the menu opens. Now and then she says an idle line or reacts when you switch a toggle on.
 
-Everything is adjustable in **Settings → Interface → Mascot**: show/hide her, speech bubbles, follow cursor, and reactions.
+Everything is adjustable in **Settings → Interface → Mascot**: show/hide her, speech bubbles, follow cursor, and reactions. Her speech bubble pops up beside her, above the window.
 
 ```lua
 Window:Say("Hello!", 3, "Smile")    -- text, seconds to hold (optional), mood (optional)
@@ -127,12 +134,15 @@ local Window = Library:CreateWindow({
 	Badge = "DEV",                 -- the little tag (false hides it)
 	Version = "v1.0",
 	Icon = "sparkles",             -- icon before "by XX"
-	Theme = "Dark",                -- "Dark" or "Light" (saved choice wins)
+	Theme = "Dark",                -- "Dark", "Light", "Midnight", "Ocean" or "Sakura" (saved choice wins)
+	Accent = nil,                  -- a Color3 to recolor every theme (saved choice wins)
+	Font = "Builder Sans",         -- see Library:SetFont below
+	SidebarCollapsed = false,      -- start with the icon rail
 	ToggleKey = Enum.KeyCode.RightShift,
 	ConfigFolder = "XX/Example",
-	Columns = 3,                   -- cards per row (1-4)
-	Size = UDim2.fromOffset(900, 560),
-	MinSize = Vector2.new(760, 460),
+	Columns = 3,                   -- most cards per row (1-4); fewer when the window is narrow
+	Size = UDim2.fromOffset(960, 600),
+	MinSize = Vector2.new(720, 460),
 	LoadingScreen = true,
 	LoadingTime = 3.5,
 	AutoSave = false,
@@ -146,26 +156,36 @@ Window:SetAuthor("XX")
 Window:SetVersion("v2.0")
 Window:SetBadge("BETA")
 Window:SetScale(1.1)
+Window:SetSidebarCollapsed(true)   -- icon rail; false expands it again
 Window:Toggle()
 ```
 
-## Tabs, pills and cards
+## Tabs, sub-tabs and cards
 
 ```lua
-local Main = Window:AddTab({ Title = "Main", Icon = "house" })
-local Basics = Main:AddSubTab("Basics")             -- a pill
+Window:AddTabGroup("Combat")                       -- optional caption in the sidebar
+local Main = Window:AddTab({
+	Title = "Main",
+	Icon = "house",
+	Description = "Farming and movement",          -- top bar subtitle (default: a live summary)
+	Badge = "NEW",                                  -- small badge beside the tab
+})
+Main:SetBadge("3")                                  -- nil hides it
+local Basics = Main:AddSubTab("Basics")             -- a segment in the sub-tab bar
 
 local Card = Basics:AddSection({
 	Title = "Toggles",
+	Description = "Optional second line",
 	Icon = "toggle-right",
-	Color = Color3.fromRGB(46, 196, 110),           -- icon tile color (default: accent)
+	Color = Color3.fromRGB(46, 196, 110),           -- icon tile and top glow (default: accent)
 	Side = 1,                                       -- column 1-3, or "Left" / "Middle" / "Right"
 })
 ```
 
-- A card created from a pill shows under that pill and under **All**. A card created straight from the tab shows under every pill.
-- Pass `ShowAll = false` to `AddTab` to drop the **All** pill.
-- Leaving `Side` out puts the card in the shortest column.
+- A card created from a sub-tab shows under that sub-tab and under **All**. A card created straight from the tab shows under every sub-tab.
+- Pass `ShowAll = false` to `AddTab` to drop the **All** segment.
+- Leaving `Side` out puts the card in the column with the fewest cards.
+- When the window is too narrow for every column, cards flow into the shortest columns that remain, in the order you created them.
 
 ## Elements
 
@@ -179,6 +199,7 @@ local Toggle = Card:AddToggle("AutoFarm", {
 	Default = false,
 	Description = "Optional grey text under the title",
 	Tooltip = "Shown on hover",
+	Style = "Switch",          -- or "Checkbox"
 	Callback = function(value) end,
 })
 Toggle:AddKeybind("AutoFarmKey", { Default = Enum.KeyCode.F, Mode = "Toggle" })  -- presses flip the toggle
@@ -188,9 +209,11 @@ Toggle:AddColorPicker("AutoFarmColor", { Default = Color3.new(1, 0, 0) })
 ### Button
 
 ```lua
-Card:AddButton({ Title = "Teleport", Callback = function() end })
+Card:AddButton({ Title = "Teleport", Icon = "map-pin", Style = "Primary", Callback = function() end })
 	:AddButton({ Title = "Reset", Confirm = true, Callback = function() end }) -- same row
 ```
+
+`Style = "Primary"` makes a gradient button; `Icon` puts an icon before the title.
 
 `Confirm = true`, or a string, requires a second click within 2.5 s.
 
@@ -307,7 +330,7 @@ Files live in your executor's workspace:
 <ConfigFolder>/
   configs/<name>.json   saved configs
   autoload.txt          config loaded on startup
-  settings.json         theme, scale, menu key, mascot options, window position...
+  settings.json         theme, accent, font, scale, menu key, sidebar, mascot options, window position...
 MyUI2/assets/           cached icon and mascot sheets
 ```
 
@@ -334,8 +357,10 @@ Library:ImportConfig(json)
 ## Theme and notifications
 
 ```lua
-Library:SetTheme("Light")           -- "Dark" or "Light"; switching cross-fades every color
-Library:ToggleTheme()
+Library:SetTheme("Ocean")           -- any name from Library:GetThemes(); switching cross-fades every color
+Library:ToggleTheme()               -- flips between the last dark and the last light theme
+Library:SetAccent(Color3.fromRGB(255, 140, 40))  -- recolors every theme; nil restores the theme's own
+Library:SetFont("Gotham")           -- "Builder Sans", "Gotham", "Montserrat", "Roboto", "Ubuntu", "Nunito", ...
 Library.Animations = false          -- instant state changes, lowest overhead
 Library:SetKeybindListVisible(true)
 Library:Notify({ Title = "Hi", Content = "Rich <b>text</b>", Type = "Success", Duration = 4 })
